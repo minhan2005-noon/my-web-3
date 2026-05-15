@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về Tôi - Minh Ân | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 3.8rem;
+            line-height: 1.1;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        
+        .story-line {
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black">Â</div>
+                <span class="text-3xl font-bold">Minh Ân</span>
+            </div>
+            
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html" class="hover:text-blue-600 transition">Trang chủ</a>
+                <a href="about.html" class="text-blue-600 font-bold">Về tôi</a>
+                <a href="experience.html" class="hover:text-blue-600 transition">Kinh nghiệm</a>
+                <a href="skills.html" class="hover:text-blue-600 transition">Kỹ năng</a>
+                <a href="projects.html" class="hover:text-blue-600 transition">Dự án</a>
+                <a href="blog.html" class="hover:text-blue-600 transition">Blog</a>
+                <a href="contact.html" class="hover:text-blue-600 transition">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-2xl">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-4xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ABOUT ==================== -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h1 class="section-title text-6xl">Câu chuyện<br>của tôi</h1>
+                    <p class="text-2xl mt-6 text-blue-200">Từ một sinh viên đam mê code đến Frontend Developer chuyên nghiệp.</p>
+                </div>
+                <div class="text-right">
+                    <img src="https://via.placeholder.com/600x700/1e40af/white?text=Minh+Ân" 
+                         class="rounded-3xl shadow-2xl mx-auto lg:ml-auto" alt="Minh Ân">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MY JOURNEY ==================== -->
+    <section class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-title text-center mb-16">Hành Trình Của Tôi</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative pl-12 border-l-4 border-blue-500 space-y-16">
+                    <!-- Journey items -->
+                    <div class="relative">
+                        <div class="absolute -left-3 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs">2023</span>
+                        </div>
+                        <h3 class="text-2xl font-bold">Bắt đầu hành trình</h3>
+                        <p class="mt-4 text-lg">Tôi bắt đầu học lập trình web từ HTML/CSS cơ bản. Ban đầu chỉ là sở thích, sau đó trở thành đam mê thực sự.</p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute -left-3 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs">2024</span>
+                        </div>
+                        <h3 class="text-2xl font-bold">Chinh phục React & Next.js</h3>
+                        <p class="mt-4 text-lg">Học React trong 3 tháng và bắt đầu làm dự án thực tế. Đây là bước ngoặt lớn nhất trong sự nghiệp của tôi.</p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute -left-3 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs">2025</span>
+                        </div>
+                        <h3 class="text-2xl font-bold">Freelance & Internship</h3>
+                        <p class="mt-4 text-lg">Làm freelance hơn 8 dự án và thực tập Frontend Developer tại công ty công nghệ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VALUES & PHILOSOPHY ==================== -->
+    <section class="py-24 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-title text-center mb-16">Triết Lý Của Tôi</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white dark:bg-gray-900 p-10 rounded-3xl card-hover">
+                    <h3 class="text-3xl font-bold mb-4">01. Simplicity</h3>
+                    <p class="text-lg">Tôi tin rằng giao diện càng đơn giản càng mạnh mẽ. Ít là nhiều hơn.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-10 rounded-3xl card-hover">
+                    <h3 class="text-3xl font-bold mb-4">02. User First</h3>
+                    <p class="text-lg">Mọi quyết định thiết kế đều xuất phát từ nhu cầu và trải nghiệm của người dùng.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-10 rounded-3xl card-hover">
+                    <h3 class="text-3xl font-bold mb-4">03. Attention to Detail</h3>
+                    <p class="text-lg">Chỉn chu đến từng pixel nhỏ nhất. Đó là sự khác biệt giữa "được" và "xuất sắc".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PERSONAL LIFE ==================== -->
+    <section class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-title text-center mb-16">Ngoài Công Việc</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold mb-6">Sở thích</h3>
+                    <ul class="space-y-6 text-lg">
+                        <li class="flex gap-4"><i class="fas fa-music text-blue-600"></i> Nghe nhạc Indie & Lo-fi</li>
+                        <li class="flex gap-4"><i class="fas fa-book text-blue-600"></i> Đọc sách về tâm lý học và thiết kế</li>
+                        <li class="flex gap-4"><i class="fas fa-plane text-blue-600"></i> Du lịch & Khám phá văn hóa</li>
+                        <li class="flex gap-4"><i class="fas fa-dumbbell text-blue-600"></i> Tập gym & Chăm sóc sức khỏe</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold mb-6">Mục tiêu tương lai</h3>
+                    <p class="text-lg leading-relaxed">
+                        Trở thành Senior Frontend Developer năm 2027.<br>
+                        Xây dựng được một sản phẩm SaaS cá nhân có hàng nghìn người dùng.<br>
+                        Chia sẻ kiến thức qua YouTube và Blog.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-900 text-white py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <p class="text-4xl font-bold mb-4">Minh Ân</p>
+            <p class="text-gray-400">Frontend Developer • TP. Hồ Chí Minh, Việt Nam</p>
+            <div class="flex justify-center gap-8 mt-10 text-3xl">
+                <i class="fab fa-github hover:text-blue-400 cursor-pointer"></i>
+                <i class="fab fa-linkedin hover:text-blue-400 cursor-pointer"></i>
+                <i class="fab fa-facebook hover:text-blue-400 cursor-pointer"></i>
+            </div>
+            <p class="mt-16 text-gray-500">© 2026 Minh Ân. Made with ❤️ and lots of coffee.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            alert("Mobile menu đang được mở rộng (bạn có thể phát triển thêm)");
+        }
+
+        // Scroll Animation
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+
+        // Load theme
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+</body>
+</html>

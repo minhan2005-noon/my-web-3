@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Minh Ân | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { 
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 4.8rem;
+            line-height: 1.05;
+        }
+        
+        .blog-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blog-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 35px 70px -15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.85;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black">Â</div>
+                <span class="text-3xl font-bold">Minh Ân</span>
+            </div>
+            
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html">Trang chủ</a>
+                <a href="about.html">Về tôi</a>
+                <a href="experience.html">Kinh nghiệm</a>
+                <a href="skills.html">Kỹ năng</a>
+                <a href="projects.html">Dự án</a>
+                <a href="blog.html" class="text-blue-600 font-bold">Blog</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-2xl">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-4xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BLOG -->
+    <section class="pt-32 pb-24 bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h1 class="section-title">Blog & Kiến Thức</h1>
+            <p class="text-3xl mt-8 max-w-4xl mx-auto">
+                Chia sẻ kinh nghiệm thực chiến, những bài học từ dự án, và các kiến thức Frontend hiện đại mà tôi tích lũy được.
+            </p>
+        </div>
+    </section>
+
+    <!-- SEARCH & FILTER -->
+    <section class="py-8 bg-white dark:bg-gray-900 border-b sticky top-20 z-40">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <input type="text" id="search-input" 
+                       placeholder="Tìm kiếm bài viết..." 
+                       class="w-full md:w-96 px-6 py-5 rounded-3xl border border-gray-300 dark:border-gray-700 focus:outline-none focus:border-blue-500">
+                
+                <div class="flex gap-4 overflow-x-auto pb-2">
+                    <button onclick="filterCategory('all')" class="active-filter px-8 py-4 rounded-full font-semibold whitespace-nowrap">Tất cả</button>
+                    <button onclick="filterCategory('react')" class="px-8 py-4 rounded-full font-semibold whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800">React / Next.js</button>
+                    <button onclick="filterCategory('css')" class="px-8 py-4 rounded-full font-semibold whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800">CSS & Tailwind</button>
+                    <button onclick="filterCategory('performance')" class="px-8 py-4 rounded-full font-semibold whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800">Performance</button>
+                    <button onclick="filterCategory('career')" class="px-8 py-4 rounded-full font-semibold whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800">Career</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG POSTS GRID -->
+    <section class="py-20">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10" id="blog-grid">
+                <!-- JavaScript sẽ render bài viết -->
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <div class="max-w-2xl mx-auto text-center px-8">
+            <h2 class="text-4xl font-bold">Nhận bài viết mới nhất</h2>
+            <p class="mt-6 text-xl">Đăng ký nhận newsletter để không bỏ lỡ những bài viết chất lượng.</p>
+            <div class="mt-10 flex gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Email của bạn" 
+                       class="flex-1 px-8 py-6 rounded-3xl text-black focus:outline-none">
+                <button onclick="subscribe()" 
+                        class="px-12 py-6 bg-white text-blue-700 font-bold rounded-3xl hover:scale-105 transition">
+                    Đăng ký
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-24">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <p class="text-5xl font-bold">Minh Ân</p>
+            <p class="mt-6 text-gray-400">Chia sẻ kiến thức Frontend một cách chân thành và thực tế nhất</p>
+        </div>
+    </footer>
+
+    <script>
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Cách tối ưu hiệu suất Next.js App Router đạt 98+ Lighthouse",
+                category: "react",
+                date: "15/05/2026",
+                readTime: "12 phút",
+                image: "https://via.placeholder.com/800x500/3b82f6/white?text=Next.js+Performance",
+                excerpt: "Hướng dẫn chi tiết cách tối ưu Core Web Vitals, Server Components, Streaming và Image Optimization...",
+                content: "Bài viết rất dài với nhiều mẹo thực tế..."
+            },
+            {
+                id: 2,
+                title: "Tailwind CSS Advanced Techniques 2026",
+                category: "css",
+                date: "10/05/2026",
+                readTime: "18 phút",
+                image: "https://via.placeholder.com/800x500/6366f1/white?text=Tailwind+Advanced",
+                excerpt: "Những kỹ thuật Tailwind nâng cao mà ít người biết...",
+                content: "Nội dung chi tiết..."
+            }
+            // Có thể thêm rất nhiều bài viết
+        ];
+
+        function renderBlogPosts(posts) {
+            const container = document.getElementById('blog-grid');
+            container.innerHTML = '';
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = `blog-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden cursor-pointer`;
+                card.innerHTML = `
+                    <img src="${post.image}" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <div class="flex justify-between text-sm text-gray-500 mb-4">
+                            <span>${post.date}</span>
+                            <span>${post.readTime}</span>
+                        </div>
+                        <h3 class="text-2xl font-bold leading-tight mb-4">${post.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 line-clamp-3">${post.excerpt}</p>
+                        <button onclick="readArticle(${post.id})" 
+                                class="mt-8 text-blue-600 font-semibold flex items-center gap-2">
+                            Đọc tiếp →
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat) {
+            // Logic filter
+            if (cat === 'all') renderBlogPosts(blogPosts);
+            else renderBlogPosts(blogPosts.filter(p => p.category === cat));
+        }
+
+        function readArticle(id) {
+            alert(`Đang mở bài viết ID: ${id} (Bạn có thể mở modal hoặc chuyển sang trang chi tiết bài viết)`);
+        }
+
+        function subscribe() {
+            alert("Cảm ơn bạn đã đăng ký nhận bài viết mới nhất!");
+        }
+
+        // Khởi tạo
+        renderBlogPosts(blogPosts);
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function toggleMobileMenu() {
+            alert("Mobile menu đang được phát triển...");
+        }
+
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+</body>
+</html>

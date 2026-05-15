@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Minh Ân | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { 
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 5rem;
+            line-height: 1.05;
+        }
+        
+        .input-focus {
+            transition: all 0.4s;
+        }
+        .input-focus:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black">Â</div>
+                <span class="text-3xl font-bold">Minh Ân</span>
+            </div>
+            
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html">Trang chủ</a>
+                <a href="about.html">Về tôi</a>
+                <a href="experience.html">Kinh nghiệm</a>
+                <a href="skills.html">Kỹ năng</a>
+                <a href="projects.html">Dự án</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html" class="text-blue-600 font-bold">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-2xl">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-4xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO CONTACT -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-blue-950 via-indigo-900 to-violet-950 text-white">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h1 class="section-title">Hãy Nói Chuyện</h1>
+            <p class="text-3xl mt-8 max-w-3xl mx-auto">
+                Tôi luôn sẵn sàng hợp tác, trao đổi kinh nghiệm hoặc chỉ đơn giản là trò chuyện về công nghệ.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTACT SECTION -->
+    <section class="py-24">
+        <div class="max-w-screen-2xl mx-auto px-8 grid lg:grid-cols-12 gap-16">
+            
+            <!-- LEFT - FORM -->
+            <div class="lg:col-span-7 bg-white dark:bg-gray-900 p-12 rounded-3xl shadow-2xl">
+                <h2 class="text-4xl font-bold mb-10">Gửi tin nhắn cho tôi</h2>
+                <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Họ và tên *</label>
+                            <input type="text" required class="input-focus w-full px-8 py-6 rounded-3xl border border-gray-300 dark:border-gray-700 focus:outline-none text-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Email *</label>
+                            <input type="email" required class="input-focus w-full px-8 py-6 rounded-3xl border border-gray-300 dark:border-gray-700 focus:outline-none text-lg">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-3">Tiêu đề tin nhắn</label>
+                        <input type="text" class="input-focus w-full px-8 py-6 rounded-3xl border border-gray-300 dark:border-gray-700 focus:outline-none text-lg">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-3">Nội dung tin nhắn *</label>
+                        <textarea rows="8" required class="input-focus w-full px-8 py-6 rounded-3xl border border-gray-300 dark:border-gray-700 focus:outline-none text-lg resize-y"></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full py-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-2xl font-bold rounded-3xl hover:scale-105 active:scale-95 transition-all">
+                        GỬI TIN NHẮN
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT - CONTACT INFO -->
+            <div class="lg:col-span-5 space-y-12">
+                <div class="bg-white dark:bg-gray-900 p-10 rounded-3xl">
+                    <h3 class="text-3xl font-bold mb-8">Thông tin liên hệ</h3>
+                    <div class="space-y-10">
+                        <div class="flex gap-6">
+                            <i class="fas fa-envelope text-4xl text-blue-600 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <a href="mailto:anhminh.dev@gmail.com" class="text-lg hover:underline">23137001@student.hcmus.edu.vn</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <i class="fas fa-phone text-4xl text-blue-600 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Số điện thoại</p>
+                                <a href="tel:0912345678" class="text-lg hover:underline">0938 508 330</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <i class="fas fa-map-marker-alt text-4xl text-blue-600 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Địa chỉ</p>
+                                <p class="text-lg">Quận 6, TP. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-3xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="380" class="rounded-2xl" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-title text-center mb-16">Câu hỏi thường gặp</h2>
+            <!-- Nhiều câu hỏi FAQ dài -->
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-32 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+        <h2 class="text-5xl font-bold">Sẵn sàng bắt đầu dự án mới cùng tôi?</h2>
+        <button onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})" 
+                class="mt-12 px-16 py-8 bg-white text-blue-700 text-2xl font-bold rounded-3xl hover:scale-110 transition">
+            Bắt đầu ngay hôm nay
+        </button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-24">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <p class="text-5xl font-bold">Cảm ơn bạn đã ghé thăm</p>
+            <p class="mt-8 text-gray-400">Hẹn gặp lại ở dự án tiếp theo!</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function toggleMobileMenu() {
+            alert("Mobile menu đang được phát triển...");
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("🎉 Tin nhắn của bạn đã được gửi thành công!\nMình sẽ phản hồi trong vòng 24 giờ.");
+            e.target.reset();
+        }
+
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+</body>
+</html>

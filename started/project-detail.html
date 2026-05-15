@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Clone - Minh Ân | Project Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { 
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 4.8rem;
+            line-height: 1.05;
+        }
+        
+        .hero-project {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .detail-image {
+            transition: all 0.6s ease;
+        }
+        .detail-image:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black">Â</div>
+                <span class="text-3xl font-bold">Minh Ân</span>
+            </a>
+            
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html">Trang chủ</a>
+                <a href="about.html">Về tôi</a>
+                <a href="experience.html">Kinh nghiệm</a>
+                <a href="skills.html">Kỹ năng</a>
+                <a href="projects.html">Dự án</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+
+            <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-2xl">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PROJECT HERO -->
+    <section class="hero-project pt-32 pb-20 text-white">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <a href="projects.html" class="inline-flex items-center gap-2 text-blue-200 hover:text-white mb-8">
+                ← Quay lại Danh sách Dự án
+            </a>
+            <h1 id="project-title" class="section-title text-6xl">Shopee E-commerce Platform</h1>
+            <p id="project-tech" class="text-2xl mt-6 text-blue-200"></p>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-7">
+                    <h2 class="text-4xl font-bold mb-8">Tổng quan dự án</h2>
+                    <p class="text-lg leading-relaxed">
+                        Đây là dự án cá nhân lớn nhất của tôi. Tôi đã xây dựng một nền tảng thương mại điện tử hoàn chỉnh giống Shopee, bao gồm cả frontend và một phần backend. Dự án giúp tôi nâng cao kỹ năng full-stack và hiểu rõ hơn về quy trình phát triển sản phẩm lớn.
+                    </p>
+                    <div class="mt-12 grid grid-cols-3 gap-8">
+                        <div>
+                            <span class="block text-5xl font-bold text-blue-600">4.5</span>
+                            <span class="text-sm">Tháng hoàn thành</span>
+                        </div>
+                        <div>
+                            <span class="block text-5xl font-bold text-blue-600">28</span>
+                            <span class="text-sm">Tính năng chính</span>
+                        </div>
+                        <div>
+                            <span class="block text-5xl font-bold text-blue-600">98</span>
+                            <span class="text-sm">Điểm Lighthouse</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <img id="main-image" src="https://via.placeholder.com/900x600/3b82f6/white?text=Shopee+Full+Platform" 
+                         class="detail-image w-full rounded-3xl shadow-2xl" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="text-4xl font-bold mb-12">Công nghệ sử dụng</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Nhiều công nghệ với mô tả dài -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CHALLENGES & SOLUTIONS -->
+    <section class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="text-4xl font-bold mb-12">Thách thức & Giải pháp</h2>
+            <!-- Nhiều card thách thức dài dòng -->
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="text-4xl font-bold mb-12">Gallery & Screenshots</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Nhiều hình ảnh demo -->
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & IMPACT -->
+    <section class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h2 class="text-4xl font-bold mb-16">Kết quả đạt được</h2>
+            <div class="grid md:grid-cols-4 gap-10">
+                <!-- Nhiều số liệu thống kê dài -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-2xl italic">"Dự án này cho thấy Minh Ân có khả năng làm việc độc lập và giải quyết vấn đề rất tốt."</p>
+            <p class="mt-8 font-semibold">- Mentor tại ABC Technology</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <p class="text-4xl font-bold">Cảm ơn bạn đã xem dự án này!</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        // Lấy id từ URL và hiển thị nội dung
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id') || 1;
+
+        // Dữ liệu mẫu
+        const projectData = {
+            title: "Shopee E-commerce Platform",
+            tech: "Next.js 14 • TypeScript • Tailwind CSS • Prisma • PostgreSQL • Redux Toolkit"
+        };
+
+        document.getElementById('project-title').textContent = projectData.title;
+        document.getElementById('project-tech').textContent = projectData.tech;
+
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+</body>
+</html>

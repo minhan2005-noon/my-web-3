@@ -1,0 +1,23 @@
+<!-- header.html -->
+<nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-bold text-blue-600 dark:text-blue-500">ÂN.</a>
+        
+        <div class="hidden md:flex items-center gap-8 text-lg font-medium">
+            <a href="index.html" class="nav-link">Trang chủ</a>
+            <a href="about.html" class="nav-link">Về tôi</a>
+            <a href="experience.html" class="nav-link">Kinh nghiệm</a>
+            <a href="projects.html" class="nav-link">Dự án</a>
+            <a href="contact.html" class="nav-link">Liên hệ</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button onclick="toggleDarkMode()" id="theme-toggle" class="w-10 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-xl transition">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+            <button id="hamburger" class="md:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>

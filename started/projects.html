@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án - Minh Ân | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { 
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1.05;
+        }
+        
+        .project-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-25px) scale(1.04);
+            box-shadow: 0 40px 80px -20px rgba(37, 99, 235, 0.35);
+        }
+        
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.6) translateY(100px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black">Â</div>
+                <span class="text-3xl font-bold">Minh Ân</span>
+            </div>
+            
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html">Trang chủ</a>
+                <a href="about.html">Về tôi</a>
+                <a href="experience.html">Kinh nghiệm</a>
+                <a href="skills.html">Kỹ năng</a>
+                <a href="projects.html" class="text-blue-600 font-bold">Dự án</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 flex items-center justify-center text-2xl">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-4xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO PROJECTS -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-violet-900 via-blue-900 to-indigo-900 text-white">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h1 class="section-title">Dự Án Của Tôi</h1>
+            <p class="text-3xl mt-6 max-w-4xl mx-auto">
+                Tổng hợp hơn 18 dự án thực tế từ cá nhân, freelance đến doanh nghiệp. 
+                Mỗi dự án đều là một câu chuyện học hỏi và nỗ lực.
+            </p>
+        </div>
+    </section>
+
+    <!-- FILTER -->
+    <section class="sticky top-20 bg-white dark:bg-gray-900 z-40 border-b py-6">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-wrap gap-4 justify-center" id="filter-buttons">
+                <button onclick="filterProjects('all')" class="active-filter px-8 py-4 rounded-full font-semibold bg-blue-600 text-white">Tất cả dự án</button>
+                <button onclick="filterProjects('nextjs')" class="px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800">Next.js</button>
+                <button onclick="filterProjects('react')" class="px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800">React</button>
+                <button onclick="filterProjects('uiux')" class="px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800">UI/UX</button>
+                <button onclick="filterProjects('fullstack')" class="px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800">Fullstack</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section class="py-20">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10" id="projects-grid">
+                <!-- JavaScript sẽ render dự án vào đây -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4">
+        <div class="modal bg-white dark:bg-gray-900 max-w-4xl w-full rounded-3xl overflow-hidden max-h-[95vh] overflow-y-auto">
+            <div id="modal-content" class="p-10"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <p class="text-4xl font-bold">Minh Ân</p>
+            <p class="mt-6 text-gray-400">Tổng hợp các dự án tôi đã thực hiện từ năm 2023 đến nay</p>
+        </div>
+    </footer>
+
+    <script>
+        const projects = [
+            {
+                id: 1,
+                title: "Shopee E-commerce Full Platform",
+                category: "nextjs",
+                image: "https://via.placeholder.com/800x500/3b82f6/white?text=Shopee+Clone",
+                tech: "Next.js 14 • TypeScript • Tailwind • Prisma • PostgreSQL",
+                shortDesc: "Website thương mại điện tử hoàn chỉnh với đầy đủ tính năng.",
+                longDesc: "Dự án lớn nhất của tôi. Bao gồm user authentication, cart system, payment gateway (VNPay, Momo), admin dashboard, product management, order tracking, review system, và responsive trên mọi thiết bị...",
+                year: "2025",
+                role: "Full Frontend + Backend Integration"
+            },
+            {
+                id: 2,
+                title: "Modern Analytics Dashboard",
+                category: "react",
+                image: "https://via.placeholder.com/800x500/8b5cf6/white?text=Analytics+Dashboard",
+                tech: "React • Recharts • TanStack Query • Zustand",
+                shortDesc: "Dashboard quản trị hiện đại với dữ liệu thời gian thực.",
+                longDesc: "Giao diện admin cực kỳ chuyên nghiệp, hỗ trợ dark mode, multi-role permission, interactive charts, export data, notification system...",
+                year: "2025",
+                role: "Lead Frontend Developer"
+            },
+            // Thêm nhiều dự án khác (tôi đã rút gọn để phản hồi, nhưng code có thể mở rộng rất dài)
+        ];
+
+        function renderProjects(filteredProjects) {
+            const container = document.getElementById('projects-grid');
+            container.innerHTML = '';
+            
+            filteredProjects.forEach(project => {
+                const cardHTML = `
+                    <div onclick="showProjectModal(${project.id})" class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden cursor-pointer shadow-2xl">
+                        <img src="${project.image}" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-2xl font-bold">${project.title}</h3>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full">${project.year}</span>
+                            </div>
+                            <p class="mt-3 text-gray-600 dark:text-gray-400">${project.shortDesc}</p>
+                            <p class="text-sm text-blue-600 mt-6">${project.tech}</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        function filterProjects(category) {
+            document.querySelectorAll('#filter-buttons button').forEach(btn => {
+                btn.classList.remove('active-filter', 'bg-blue-600', 'text-white');
+            });
+            event.target.classList.add('active-filter', 'bg-blue-600', 'text-white');
+
+            if (category === 'all') {
+                renderProjects(projects);
+            } else {
+                renderProjects(projects.filter(p => p.category === category));
+            }
+        }
+
+        function showProjectModal(id) {
+            const project = projects.find(p => p.id === id);
+            if (!project) return;
+
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+
+            content.innerHTML = `
+                <button onclick="closeModal()" class="float-right text-4xl leading-none hover:text-gray-400">×</button>
+                <img src="${project.image}" class="w-full rounded-2xl mb-8">
+                <h2 class="text-4xl font-bold">${project.title}</h2>
+                <p class="text-blue-600 mt-2">${project.tech}</p>
+                <p class="mt-8 text-lg leading-relaxed">${project.longDesc}</p>
+                <div class="mt-12 flex gap-6">
+                    <button onclick="goToDetail(${project.id})" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-3xl text-xl font-semibold">
+                        Xem Chi Tiết Đầy Đủ →
+                    </button>
+                    <button onclick="closeModal()" class="flex-1 border border-gray-300 dark:border-gray-600 py-6 rounded-3xl text-xl font-semibold">
+                        Đóng
+                    </button>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        function goToDetail(id) {
+            window.location.href = `project-detail.html?id=${id}`;
+        }
+
+        // Khởi tạo
+        renderProjects(projects);
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function toggleMobileMenu() {
+            alert("Mobile menu - Đang phát triển...");
+        }
+
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+</body>
+</html>

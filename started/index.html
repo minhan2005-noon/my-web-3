@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minh Ân - Frontend Developer chuyên nghiệp tại TP. Hồ Chí Minh. React, Next.js, Tailwind CSS, UI/UX Expert">
+    <title>Minh Ân | Frontend Developer & UI/UX Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 45%, #60a5fa 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .dark .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 45%, #3b82f6 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+        }
+        
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-20px) scale(1.04);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: all 0.3s;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-gray-200 dark:border-gray-800 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white text-3xl font-black shadow-inner">Â</div>
+                <div>
+                    <span class="text-3xl font-bold tracking-tight">Minh Ân</span>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 -mt-1">Frontend Developer</p>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-10 text-lg font-medium">
+                <a href="index.html" class="nav-link text-blue-600">Trang chủ</a>
+                <a href="about.html" class="nav-link">Về tôi</a>
+                <a href="experience.html" class="nav-link">Kinh nghiệm</a>
+                <a href="skills.html" class="nav-link">Kỹ năng</a>
+                <a href="projects.html" class="nav-link">Dự án</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleDarkMode()" id="theme-btn"
+                        class="w-12 h-12 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-2xl hover:scale-110 transition">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-4xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-bg min-h-screen flex items-center relative overflow-hidden text-white">
+        <div class="absolute inset-0 bg-black/20"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-8 pt-24 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="space-y-10">
+                <div class="inline-flex items-center gap-3 bg-white/20 px-6 py-3 rounded-3xl backdrop-blur-xl">
+                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="font-medium">Open to new opportunities 2026</span>
+                </div>
+
+                <h1 class="text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
+                    TẠO RA NHỮNG<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-blue-100">TRẢI NGHIỆM</span><br>
+                    ĐẸP NHẤT
+                </h1>
+
+                <p class="text-2xl text-blue-100 max-w-2xl">
+                    Frontend Developer với hơn 2 năm kinh nghiệm. Chuyên sâu React, Next.js, Tailwind CSS và thiết kế giao diện hiện đại.
+                </p>
+
+                <div class="flex flex-wrap gap-6">
+                    <a href="projects.html" 
+                       class="px-10 py-6 bg-white text-blue-700 font-bold text-xl rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                        Khám phá dự án →
+                    </a>
+                    <a href="contact.html" 
+                       class="px-10 py-6 border-2 border-white font-bold text-xl rounded-3xl hover:bg-white hover:text-blue-700 transition-all">
+                        Liên hệ ngay
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-16 pt-8">
+                    <div>
+                        <div class="stat-number">18</div>
+                        <p class="text-blue-100">Dự án hoàn thành</p>
+                    </div>
+                    <div>
+                        <div class="stat-number">12</div>
+                        <p class="text-blue-100">Khách hàng</p>
+                    </div>
+                    <div>
+                        <div class="stat-number">99%</div>
+                        <p class="text-blue-100">Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <img src="https://via.placeholder.com/700x820/1e40af/ffffff?text=Minh+Ân" 
+                     class="rounded-[4rem] shadow-2xl border-8 border-white/30" alt="Minh Ân">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATS BAR ==================== -->
+    <section class="py-8 bg-white dark:bg-gray-900 border-b">
+        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="card-hover p-6 rounded-3xl bg-gray-50 dark:bg-gray-800">
+                <h4 class="text-4xl font-bold text-blue-600">React</h4>
+                <p class="text-sm text-gray-500">Expert Level</p>
+            </div>
+            <!-- Thêm nhiều card khác... -->
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <!-- Phần này sẽ rất dài với nhiều testimonial, carousel, v.v. -->
+
+    <!-- ==================== FEATURED PROJECTS ==================== -->
+    <!-- Nhiều card dự án với hover effect mạnh -->
+
+    <script>
+        // Dark Mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-sun');
+            }
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Khởi tạo theme
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
